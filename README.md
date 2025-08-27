@@ -60,7 +60,7 @@ A clone of the classic **Asteroids** arcade game, built with Python and Pygame.
 
 	- Large: 20 points
 	- Medium: 40 points
-	- Small: 00 points
+	- Small: 80 points
 
 - Your score and remaining lives are displayed at the top of the screen.
 
