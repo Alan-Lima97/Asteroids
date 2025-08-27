@@ -52,7 +52,7 @@ def main():
 
         updatables.update(dt)
 
-#       colisions and gameover
+#       colisions and gameover screen
         for asteroid in asteroids:
             if asteroid.collision(player1):
                 action = game_over_screen(screen, score, SCREEN_WIDTH, SCREEN_HEIGHT, font)
