@@ -7,7 +7,13 @@ class Asteroid(CircleShape):
 
     def __init__(self, x, y, radius):
         super().__init__(x, y, radius)
-                
+        if radius > 40:
+            self.points = 20
+        elif radius > 20:
+            self.points = 40
+        else:
+            self.points = 80     
+                        
     def draw(self, screen):
         center = (int(self.position.x), int(self.position.y))
         pygame.draw.circle(screen, (255,255,255), center, int(self.radius), 2)
@@ -27,4 +33,3 @@ class Asteroid(CircleShape):
         new_asteroid2 = Asteroid(self.position.x, self.position.y, new_radius)
         new_asteroid1.velocity = v1 * 1.2
         new_asteroid2.velocity = v2 * 1.2
-            
