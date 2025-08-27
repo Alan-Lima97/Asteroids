@@ -15,6 +15,7 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     score = 0
     font = pygame.font.Font(None, 36)
+    lives = 3
     
     print("Starting Asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
@@ -52,12 +53,16 @@ def main():
 
         updatables.update(dt)
 
-#       colisions and gameover screen
+#       colisions and lives
         for asteroid in asteroids:
             if asteroid.collision(player1):
-                action = game_over_screen(screen, score, SCREEN_WIDTH, SCREEN_HEIGHT, font)
-                if action == "restart":
-                    main()
+                lives -= 1
+                if lives > 0:
+                    player1.position = pygame.Vector2(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
+                else:
+                    action = game_over_screen(screen, score, SCREEN_WIDTH, SCREEN_HEIGHT, font)
+                    if action == "restart":
+                        main()
 
 #       shot collision
         for asteroid in asteroids:
@@ -75,6 +80,9 @@ def main():
 
         text = font.render(f"Score: {score}", True, (255, 255, 255))
         screen.blit(text, (10, 10))
+
+        lives_text = font.render(f"Lives: {lives}", True, (255, 255, 255))
+        screen.blit(lives_text, (10, 40))
 
         pygame.display.flip()
                 
